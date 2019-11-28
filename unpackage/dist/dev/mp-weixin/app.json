@@ -24,7 +24,13 @@
     "navigationStyle": "custom",
     "backgroundColor": "#f8f8f8"
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于搜索附近的订单信息"
+    }
+  },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap34.json"
 }

@@ -56,9 +56,14 @@
     "mp-weixin" : {
         /* 小程序特有相关 */
         "usingComponents" : true,
-        "appid" : "wxfd260d4e22b0e837",
+        "appid" : "wxd363fdb0cb077d31",
         "setting" : {
             "urlCheck" : true
+        },
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : "用于搜索附近的订单信息"
+            }
         }
     },
     "h5" : {
