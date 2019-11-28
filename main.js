@@ -39,6 +39,10 @@ const prePage = ()=>{
 	// #endif
 	return prePage.$vm;
 }
+
+import cuCustom from './colorui/components/cu-custom.vue'
+Vue.component('cu-custom',cuCustom)
+
 Vue.config.productionTip = false
 Vue.prototype.$fire = new Vue();
 Vue.prototype.$store = store;

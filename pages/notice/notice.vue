@@ -1,8 +1,12 @@
 <template>
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText"></block>
+			<block slot="content">消息中心</block>
+		</cu-custom>
 		<view class="notice-item">
 			<text class="time">11:30</text>
-			<view class="content">
+			<view class="content1">
 				<text class="title">新品上市，全场满199减50</text>
 				<view class="img-wrapper">
 					<image class="pic" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556465765776&di=57bb5ff70dc4f67dcdb856e5d123c9e7&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01fd015aa4d95fa801206d96069229.jpg%401280w_1l_2o_100sh.jpg"></image>
@@ -18,7 +22,7 @@
 		</view>
 		<view class="notice-item">
 			<text class="time">昨天 12:30</text>
-			<view class="content">
+			<view class="content1">
 				<text class="title">新品上市，全场满199减50</text>
 				<view class="img-wrapper">
 					<image class="pic" src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3761064275,227090144&fm=26&gp=0.jpg"></image>
@@ -34,7 +38,7 @@
 		</view>
 		<view class="notice-item">
 			<text class="time">2019-07-26 12:30</text>
-			<view class="content">
+			<view class="content1">
 				<text class="title">新品上市，全场满199减50</text>
 				<view class="img-wrapper">
 					<image class="pic" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556465765776&di=57bb5ff70dc4f67dcdb856e5d123c9e7&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01fd015aa4d95fa801206d96069229.jpg%401280w_1l_2o_100sh.jpg"></image>
@@ -87,7 +91,7 @@
 		color: #7d7d7d;
 	}
 
-	.content {
+	.content1 {
 		width: 710upx;
 		padding: 0 24upx;
 		background-color: #fff;

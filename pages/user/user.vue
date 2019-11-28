@@ -1,6 +1,9 @@
 <template>  
     <view class="container">  
-		
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText"></block>
+			<block slot="content">个人中心</block>
+		</cu-custom>
 		<view class="user-section">
 			<image class="bg" src="/static/img/user_bg.jpeg"></image>
 			<view class="user-info-box">
@@ -253,7 +256,6 @@
 		padding: 0 4%;
 		display: flex;
 		align-items: center;
-		padding-bottom: 120upx;
 		.left{
 			width: 20vw;
 			height: 20vw;
