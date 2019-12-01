@@ -128,6 +128,14 @@ export default {
 	},
 
 	onLoad() {},
+	//右上角分享功能
+	onShareAppMessage: function(res) {
+		return {
+			title: 'car-wash-mini',
+			desc: '上门洗车',
+			path: '/pages/index/index',
+		};
+	},
 	methods: {
 		doXuanzhuan(){
 			this.xuanzhuan += 360;

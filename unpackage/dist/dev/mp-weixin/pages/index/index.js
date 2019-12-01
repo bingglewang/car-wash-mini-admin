@@ -252,6 +252,14 @@ __webpack_require__.r(__webpack_exports__);
   },
 
   onLoad: function onLoad() {},
+  //右上角分享功能
+  onShareAppMessage: function onShareAppMessage(res) {
+    return {
+      title: 'car-wash-mini',
+      desc: '上门洗车',
+      path: '/pages/index/index' };
+
+  },
   methods: {
     doXuanzhuan: function doXuanzhuan() {
       this.xuanzhuan += 360;
