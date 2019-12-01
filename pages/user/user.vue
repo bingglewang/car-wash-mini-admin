@@ -1,14 +1,13 @@
 <template>  
     <view class="container">  
-		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+		<cu-custom  :isBack="true" style="position: fixed;left: 0;top: 0;z-index: 999;background:rgba(190,190,190,0.5);color: #FFFFFF;">
 			<block slot="backText"></block>
 			<block slot="content">个人中心</block>
 		</cu-custom>
-		<view class="user-section">
-			<image class="bg" src="/static/img/user_bg.jpeg"></image>
+		<view class="user-section" :style="{height: MyCustomBar+'px'}">
 			<view class="user-info-box">
 				<!-- 用户信息 -->
-				<view class="user">
+				<view class="user" :style="{'margin-top':CustomBar+StatusBar+'px'}">
 					<!-- 头像 -->
 					<view class="left" v-if="!hasLogin">
 						<image :src="user.face" @tap="toLogin"></image>
@@ -40,21 +39,6 @@
 			@touchend="coverTouchend"
 		>
 			<image class="arc" src="/static/arc.png"></image>
-			
-			<!-- <view class="tj-sction">
-				<view class="tj-item">
-					<text class="num">{{userInfo.growth == '' || userInfo.growth == undefined ? 0 : userInfo.growth}}</text>
-					<text>成长值</text>
-				</view>
-				<view class="tj-item">
-					<text class="num">{{userInfo.luckeyCount == '' || userInfo.luckeyCount == undefined ? 0 : userInfo.luckeyCount}}</text>
-					<text>抽奖次数</text>
-				</view>
-				<view class="tj-item">
-					<text class="num">{{userInfo.integration == '' || userInfo.integration == undefined ? 0 : userInfo.integration}}</text>
-					<text>积分</text>
-				</view>
-			</view> -->
 			<!-- 订单 -->
 			<view class="order-section">
 				<view class="order-item" @click="navTo('/pages/order/order?state=0')" hover-class="common-hover"  :hover-stay-time="50">
@@ -102,6 +86,9 @@
 		},
 		data(){
 			return {
+				StatusBar: this.StatusBar,
+				CustomBar: this.CustomBar,
+				MyCustomBar:0,
 				//个人信息,
 				user:{
 					username: "游客001",
@@ -117,6 +104,7 @@
 			}
 		},
 		onLoad(){
+			this.MyCustomBar = this.CustomBar+uni.upx2px(520);
 		},
 		// #ifndef MP
 		onNavigationBarButtonTap(e) {
@@ -238,10 +226,11 @@
 	}
 
 	.user-section{
-		height: 520upx;
 		padding: 100upx 30upx 0;
 		position:relative;
+		background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 		.bg{
+			
 			position:absolute;
 			left: 0;
 			top: 0;
@@ -313,21 +302,6 @@
 			top: -34upx;
 			width: 100%;
 			height: 36upx;
-		}
-	}
-	.tj-sction{
-		@extend %section;
-		.tj-item{
-			@extend %flex-center;
-			flex-direction: column;
-			height: 140upx;
-			font-size: $font-sm;
-			color: #75787d;
-		}
-		.num{
-			font-size: $font-lg;
-			color: $font-color-dark;
-			margin-bottom: 8upx;
 		}
 	}
 	.order-section{

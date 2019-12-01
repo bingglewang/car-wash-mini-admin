@@ -18,11 +18,10 @@
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarBackgroundColor": "#0081ff",
+    "navigationBarTitleText": "Car wash mini admin",
     "navigationStyle": "custom",
-    "backgroundColor": "#f8f8f8"
+    "navigationBarTextStyle": "white"
   },
   "permission": {
     "scope.userLocation": {
@@ -31,6 +30,5 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap34.json"
+  }
 }

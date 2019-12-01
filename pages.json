@@ -56,10 +56,9 @@
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#FFFFFF",
+		"navigationBarBackgroundColor": "#0081ff",
+		"navigationBarTitleText": "Car wash mini admin",
 		"navigationStyle": "custom",
-		"backgroundColor": "#f8f8f8"
+		"navigationBarTextStyle": "white"
 	}
 }
