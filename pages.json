@@ -31,7 +31,11 @@
 		},  {
 			"path": "pages/order/order",
 			"style": {}
-		}, {
+		},{
+			"path": "pages/order/orderDetail",
+			"style": {}
+		}, 
+		{
 			"path": "pages/money/money",
 			"style": {}
 		}, {
