@@ -2460,19 +2460,19 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 127:
+/***/ 133:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 128);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 134);
 
 
 /***/ }),
 
-/***/ 128:
+/***/ 134:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -2503,7 +2503,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 129);
+module.exports = __webpack_require__(/*! ./runtime */ 135);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -2520,7 +2520,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 129:
+/***/ 135:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -11447,7 +11447,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/set/set": {}, "pages/userinfo/userinfo": {}, "pages/login/login": {}, "pages/login/register": {}, "pages/login/resetpasswd": {}, "pages/user/user": {}, "pages/order/order": {}, "pages/money/money": {}, "pages/order/createOrder": {}, "pages/address/address": {}, "pages/address/addressManage": {}, "pages/money/pay": {}, "pages/money/paySuccess": {}, "pages/notice/notice": {} }, "globalStyle": { "navigationBarBackgroundColor": "#0081ff", "navigationBarTitleText": "Car wash mini admin", "navigationStyle": "custom", "navigationBarTextStyle": "white" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": { "uni-fab": "/components/uni-fab/uni-fab" } }, "pages/set/set": { "usingComponents": {} }, "pages/userinfo/userinfo": { "usingComponents": { "avatar": "/components/yq-avatar/yq-avatar" } }, "pages/login/login": { "usingComponents": {} }, "pages/login/register": { "usingComponents": {} }, "pages/login/resetpasswd": { "usingComponents": {} }, "pages/user/user": { "usingComponents": { "list-cell": "/components/mix-list-cell" } }, "pages/order/order": { "usingComponents": { "uni-load-more": "/components/uni-load-more/uni-load-more", "empty": "/components/empty" } }, "pages/order/orderDetail": { "usingComponents": {} }, "pages/money/money": { "usingComponents": {} }, "pages/order/createOrder": { "usingComponents": {} }, "pages/address/address": { "usingComponents": {} }, "pages/address/addressManage": { "usingComponents": {} }, "pages/money/pay": { "usingComponents": {} }, "pages/money/paySuccess": { "usingComponents": {} }, "pages/notice/notice": { "usingComponents": {} } }, "globalStyle": { "navigationBarBackgroundColor": "#0081ff", "navigationBarTitleText": "Car wash mini admin", "navigationStyle": "custom", "navigationBarTextStyle": "white" } };exports.default = _default;
 
 /***/ }),
 

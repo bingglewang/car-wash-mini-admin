@@ -78,6 +78,11 @@
 				</view>
 			</view>
 		</view>
+		<view class="button-box">
+				<button type="primary" size="default" class="save-button-addCar" @tap="toBind">确认添加</button>
+				 <em class="mybutton"></em>
+		</view>
+		
 	</view>
 </template>
 
@@ -204,6 +209,41 @@ export default {
 			}
 		}
 	}
+}
+
+.button-box{
+	display: flex;
+	align-items: center;
+	position: relative;
+	.save-button-addCar {
+		border-radius: 100px;
+		width: 80%;
+		background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
+	}
+	
+	em{
+		position: absolute;
+		left: 0px;
+		top: 0;
+		width: 50px;
+		height: 50px;
+		background-image: -moz-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));
+		background-image: -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,0.5),rgba(255,255,255,0));
+	}
+	
+	.mybutton{
+	    animation: Tada 3.75s both infinite;
+	}
+	@keyframes Tada {
+	    0% {
+	    }
+	    100% {
+			left:80%;
+			transition: all 3.75s linear;
+	    }
+	}
+	
+	
 }
 
 .my-refresh-size {

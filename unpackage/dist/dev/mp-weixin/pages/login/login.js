@@ -166,6 +166,8 @@ var _vuex = __webpack_require__(/*! vuex */ 10);function _interopRequireDefault(
 {
   data: function data() {
     return {
+      StatusBar: this.StatusBar,
+      CustomBar: this.CustomBar,
       phoneNumber: '',
       passwd: '',
       isShowOauth: false,

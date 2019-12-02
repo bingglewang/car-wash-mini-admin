@@ -8,6 +8,7 @@
     "pages/login/resetpasswd",
     "pages/user/user",
     "pages/order/order",
+    "pages/order/orderDetail",
     "pages/money/money",
     "pages/order/createOrder",
     "pages/address/address",
@@ -31,5 +32,5 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap60.json"
+  "sitemapLocation": "sitemap39.json"
 }
