@@ -1,8 +1,8 @@
 <template>
 	<view class="container999" @touchstart="refreshStart" @touchmove="refreshMove" @touchend="refreshEnd">
 		<!-- 刷新组件需搭配scroll-view使用，并在pages.json中添加 "disableScroll":true-->
-		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
-			<block slot="backText">返回</block>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText"></block>
 			<block slot="content">订单列表</block>
 		</cu-custom>
 		<refresh ref="refresh" @isRefresh='isRefresh'></refresh>
