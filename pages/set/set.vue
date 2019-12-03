@@ -1,28 +1,19 @@
 <template>
 	<view class="container">
-		<view class="list-cell b-b m-t" @click="navTo('/pages/userinfo/userinfo')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">个人资料</text>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText"></block>
+			<block slot="content">设置</block>
+		</cu-custom>
+		<view class="list-cell b-b" @click="navTo('帮助')" hover-class="cell-hover" :hover-stay-time="50">
+			<text class="cell-tit">帮助</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
-		<view class="list-cell b-b" @click="navTo('/pages/address/address')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">收货地址</text>
-			<text class="cell-more yticon icon-you"></text>
-		</view>
-		<view class="list-cell" @click="navTo('实名认证')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">实名认证</text>
-			<text class="cell-more yticon icon-you"></text>
-		</view>
-		
-		<view class="list-cell m-t">
-			<text class="cell-tit">消息推送</text>
-			<switch checked color="#fa436a" @change="switchChange" />
-		</view>
-		<view class="list-cell m-t b-b" @click="navTo('清除缓存')" hover-class="cell-hover" :hover-stay-time="50">
+		<view class="list-cell b-b" @click="navTo('清除缓存')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">清除缓存</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		<view class="list-cell b-b" @click="navTo('关于Dcloud')" hover-class="cell-hover" :hover-stay-time="50">
-			<text class="cell-tit">关于Dcloud</text>
+			<text class="cell-tit">关于我们</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
 		<view class="list-cell">
@@ -130,9 +121,6 @@
 		.cell-tip{
 			font-size: $font-base;
 			color: $font-color-light;
-		}
-		switch{
-			transform: translateX(16upx) scale(.84);
 		}
 	}
 </style>

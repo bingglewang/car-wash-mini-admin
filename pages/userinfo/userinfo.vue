@@ -1,5 +1,9 @@
 <template>
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText"></block>
+			<block slot="content">我的信息</block>
+		</cu-custom>
 		<view class="content">
 			<view class="list">
 				<view class="row">
@@ -20,44 +24,27 @@
 					</view>
 				</view>
 				<view class="row">
-					<view class="title">昵称</view>
+					<view class="title">出生日期</view>
 					<view class="right">
-						<view class="tis">{{userInfo.nickname}}</view>
+						<picker mode="date" :value="date" start="2015-09-01" end="2020-09-01" @change="DateChange">
+							<view class="picker">
+								{{date}}
+							</view>
+						</picker>
 						<view class="icon jiantou"></view>
 					</view>
 				</view>
 				<view class="row">
-					<view class="title">个性签名</view>
+					<view class="title">性别</view>
 					<view class="right">
-						<view class="tis">{{userInfo.personalizedSignature == '' || userInfo.personalizedSignature ==undefined ? '这个人很赖,什么都没留下':userInfo.personalizedSignature}}</view>
-						<view class="icon jiantou"></view>
-					</view>
-				</view>
-				<view class="row">
-					<view class="title">账户安全</view>
-					<view class="right">
-						<view class="tis"></view>
+						<switch class='switch-sex' @change="SwitchC" :class="switchC?'checked':''" :checked="switchC?true:false"></switch>
 						<view class="icon jiantou"></view>
 					</view>
 				</view>
 			</view>
 			<view class="list">
 				<view class="row">
-					<view class="title">通知提醒</view>
-					<view class="right">
-						<view class="tis"></view>
-						<view class="icon jiantou"></view>
-					</view>
-				</view>
-				<view class="row">
-					<view class="title">支付设置</view>
-					<view class="right">
-						<view class="tis"></view>
-						<view class="icon jiantou"></view>
-					</view>
-				</view>
-				<view class="row">
-					<view class="title">通用</view>
+					<view class="title">提现方式</view>
 					<view class="right">
 						<view class="tis"></view>
 						<view class="icon jiantou"></view>
@@ -84,7 +71,9 @@ export default {
 	},
 	data() {
 		return {
-			url: ''
+			date: '2018-12-25',
+			url: '',
+			switchC:true
 		};
 	},
 	onShow() {
@@ -95,6 +84,12 @@ export default {
 	},
 	methods: {
 		...mapMutations(['login']),
+		SwitchC(e) {
+			this.switchC = e.detail.value
+		},
+		DateChange(e) {
+			this.date = e.detail.value
+		},
 		myUpload(path) {
 			let _this = this;
 			this.url = path;

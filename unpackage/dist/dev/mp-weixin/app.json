@@ -15,7 +15,9 @@
     "pages/address/addressManage",
     "pages/money/pay",
     "pages/money/paySuccess",
-    "pages/notice/notice"
+    "pages/notice/notice",
+    "pages/user/myQR",
+    "pages/user/myFriend"
   ],
   "subPackages": [],
   "window": {
@@ -31,6 +33,5 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  },
-  "sitemapLocation": "sitemap12.json"
+  }
 }

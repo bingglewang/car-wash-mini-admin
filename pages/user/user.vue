@@ -60,9 +60,9 @@
 			</view>
 			<!-- 底部菜单 -->
 			<view class="history-section icon">
-				<list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="我的信息"></list-cell>
-				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="我的二维码" @eventClick="navTo('/pages/address/address')"></list-cell>
-				<list-cell icon="icon-share" iconColor="#9789f7" title="我推荐的人" ></list-cell>
+				<list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="我的信息" @eventClick="navTo('/pages/userinfo/userinfo')"></list-cell>
+				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="我的二维码" @eventClick="navTo('/pages/user/myQR')"></list-cell>
+				<list-cell icon="icon-share" iconColor="#9789f7" title="我推荐的人"  @eventClick="navTo('/pages/user/myFriend')"></list-cell>
 				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="我的钱包" ></list-cell>
 				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的消息"></list-cell>
 				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="安全中心"></list-cell>
@@ -161,9 +161,9 @@
 			 * navigator标签现在默认没有转场动画，所以用view
 			 */
 			navTo(url){
-				if(!this.hasLogin){
+				/* if(!this.hasLogin){
 					url = '/pages/login/login';
-				}
+				} */
 				uni.navigateTo({  
 					url
 				})  

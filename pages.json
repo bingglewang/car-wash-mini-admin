@@ -57,6 +57,13 @@
 		}, {
 			"path": "pages/notice/notice",
 			"style": {}
+		}, {
+			"path": "pages/user/myQR",
+			"style": {}
+		},
+		{
+			"path": "pages/user/myFriend",
+			"style": {}
 		}
 	],
 	"globalStyle": {
