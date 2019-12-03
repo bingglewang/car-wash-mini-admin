@@ -42,7 +42,7 @@
 				<view class="order-item order-status-car">
 					订单状态：
 					<span style="color:#8dc63f;">{{ item.orderStatus2 }}</span>
-					<view class="cu-tag radius light bg-gradual-blue order-right-car">洗车</view>
+					<view class="cu-tag radius light bg-gradual-blue order-right-car" @click="naviagetorToPages('/pages/order/orderDetail')">洗车</view>
 				</view>
 			</view>
 		</view>
@@ -52,35 +52,35 @@
 				<view style="" class="bg-gradual-orange fujin-title-bottom"></view>
 			</view>
 			<view class="cu-item" id="xuanzhuan" :style="'transform: rotate('+xuanzhuan+'deg);transition: all 0.6s;'" @click="doXuanzhuan">
-				<text class="text-light icon-refresh my-refresh-size"></text>
+				<text class="text-light cuIcon-refresh my-refresh-size"></text>
 			</view>
 		</view>
 		<view class="cu-card">
 			<view class="cu-item bg-white shadow" v-for="(item, index) in fujinOrderList" :key="index" style="padding-bottom: 16upx;">
 				<view class="order-item" style="display: flex;align-items: center;">
-					<text class="text-cyan icon-time" style="margin-right: 15upx;"></text>
+					<text class="text-cyan cuIcon-time" style="margin-right: 15upx;"></text>
 					<text class="order-font-color" >即时订单</text>
 					<text style="font-weight: bold;margin-left: auto;">【距您0.23km】</text>
 				</view>
 				<view class="order-item" style="display: flex;align-items: center;">
-					<text class="text-blue icon-taxi" style="margin-right: 15upx;"></text>
+					<text class="text-blue cuIcon-taxi" style="margin-right: 15upx;"></text>
 					<text class="order-font-color">SUV内外洗</text>
 					<text class="order-font-color" style="margin-left: auto;">沪HUA298</text>
 					<view class="cu-tag radius light bg-gradual-blue order-right-car" style="margin-left: auto;">接单</view>
 				</view>
 				<view class="order-item">
-					<text class="text-olive icon-phone" style="margin-right: 15upx;"></text>
+					<text class="text-olive cuIcon-phone" style="margin-right: 15upx;"></text>
 					<text class="order-font-color">13227355241</text>
 				</view>
 				<view class="order-item">
-					<text class="text-red icon-location" style="margin-right: 15upx;" ></text>
+					<text class="text-red cuIcon-location" style="margin-right: 15upx;" ></text>
 					<text class="order-font-color">安徽合肥市包河区滨湖世界社区广西路</text>
 				</view>
 			</view>
 		</view>
 		<view class="button-box">
 				<button type="primary" size="default" class="save-button-addCar" @tap="toBind">确认添加</button>
-				 <em class="mybutton"></em>
+				<em class="mybutton"></em>
 		</view>
 		
 	</view>
