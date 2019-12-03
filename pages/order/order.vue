@@ -1,573 +1,264 @@
 <template>
-	<view class="content">
-		<view class="navbar">
-			<view 
-				v-for="(item, index) in navList" :key="index" 
-				class="nav-item" 
-				:class="{current: tabCurrentIndex === index}"
-				@click="tabClick(index)"
-			>
-				{{item.text}}
-			</view>
+	<view class="container999" @touchstart="refreshStart" @touchmove="refreshMove" @touchend="refreshEnd">
+		<!-- 刷新组件需搭配scroll-view使用，并在pages.json中添加 "disableScroll":true-->
+		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
+			<block slot="backText">返回</block>
+			<block slot="content">订单列表</block>
+		</cu-custom>
+		<refresh ref="refresh" @isRefresh='isRefresh'></refresh>
+		<view class='nav1'>
+			<!-- 导航栏 agents导航栏标题 -->
+			<navTab ref="navTab" :tabTitle="tabTitle" @changeTab='changeTab'></navTab>
 		</view>
-
-		<swiper :current="tabCurrentIndex" class="swiper-box" duration="300" @change="changeTab">
-			<swiper-item class="tab-content" v-for="(tabItem,tabIndex) in navList" :key="tabIndex">
-				<scroll-view 
-					class="list-scroll-content" 
-					scroll-y
-					@scrolltolower="loadData"
-				>
-					<!-- 空白页 -->
-					<empty v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty>
-					
-					<!-- 订单列表 -->
-					<view 
-						v-for="(item,index) in tabItem.orderList" :key="index"
-						class="order-item"
-					>
-						<view class="i-top b-b">
-							<text class="time">{{item.time}}</text>
-							<text class="state" :style="{color: item.stateTipColor}">{{item.stateTip}}</text>
-							<text 
-								v-if="item.state===9" 
-								class="del-btn yticon icon-iconfontshanchu1"
-								@click="deleteOrder(index)"
-							></text>
-						</view>
-						
-						<scroll-view v-if="item.goodsList.length > 1" class="goods-box" scroll-x>
-							<view
-								v-for="(goodsItem, goodsIndex) in item.goodsList" :key="goodsIndex"
-								class="goods-item"
-							>
-								<image class="goods-img" :src="goodsItem.image" mode="aspectFill"></image>
+		<!-- swiper切换 swiper-item表示一页 scroll-view表示滚动视窗 -->
+		<swiper style="min-height: 100vh;" :current="currentTab" @change="swiperTab">
+			<swiper-item v-for="(listItem,listIndex) in list" :key="listIndex">
+				<scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation :scroll-into-view="toView">
+					<view :id="'top'+listIndex" style="width: 100%;height: 110upx;">边距盒子</view>
+					<view class='cu-card'>
+						<view class="cu-item bg-white shadow padding" v-for="(item, index) in listItem" v-if="listItem.length > 0" :key="index" style="padding-bottom: 16upx;" @click="naviagetorToPages('/pages/order/orderDetail')">
+							<view class="order-item" style="display: flex;align-items: center;">
+								<text class="text-cyan cuIcon-time" style="margin-right: 15upx;"></text>
+								<text class="text-black">订单号：</text>
+								<text class="order-font-color">203084757674748338</text>
 							</view>
-						</scroll-view>
-						<view 
-							v-if="item.goodsList.length === 1" 
-							class="goods-box-single"
-							v-for="(goodsItem, goodsIndex) in item.goodsList" :key="goodsIndex"
-						>
-							<image class="goods-img" :src="goodsItem.image" mode="aspectFill"></image>
-							<view class="right">
-								<text class="title clamp">{{goodsItem.title}}</text>
-								<text class="attr-box">{{goodsItem.attr}}  x {{goodsItem.number}}</text>
-								<text class="price">{{goodsItem.price}}</text>
+							<view class="order-item" style="display: flex;align-items: center;">
+								<text class="text-blue cuIcon-taxi" style="margin-right: 15upx;"></text>
+								<text class="text-black">下单时间：</text>
+								<text class="order-font-color">沪HUA298</text>
 							</view>
-						</view>
-						
-						<view class="price-box">
-							共
-							<text class="num">7</text>
-							件商品 实付款
-							<text class="price">143.7</text>
-						</view>
-						<view class="action-box b-t" v-if="item.state != 9">
-							<button class="action-btn" @click="cancelOrder(item)">取消订单</button>
-							<button class="action-btn recom">立即支付</button>
+							<view class="order-item">
+								<text class="text-olive cuIcon-phone" style="margin-right: 15upx;"></text>
+								<text class="text-black">实付金额：</text>
+								<text class="order-font-color">￥27.95</text>
+							</view>
+							<view class="order-item">
+								<text class="text-red cuIcon-location" style="margin-right: 15upx;"></text>
+								<text class="text-black">订单状态：</text>
+								<text class="order-font-color">进行中</text>
+							</view>
+							<view class="order-item">
+								<view class="order-item-bottom">
+									<view class="cu-tag radius light bg-gradual-blue" @click="naviagetorToPages('/pages/order/orderDetail')">去洗车</view>
+								</view>
+							</view>
 						</view>
 					</view>
-					 
-					<uni-load-more :status="tabItem.loadingType"></uni-load-more>
-					
+					<view class='noCard' v-if="listItem.length===0">
+						暂无信息
+					</view>
+					<view style="width: 100%;height: 100upx;opacity:0;">底部占位盒子</view>
 				</scroll-view>
 			</swiper-item>
 		</swiper>
+		<!-- <tabBar4 :currentPage="currentPage"></tabBar4> -->
+		<view class="cu-tabbar-height"></view>
 	</view>
-</template> 
+</template>
 
 <script>
-	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue';
-	import empty from "@/components/empty";
-	import Json from '@/Json';
+	const util = require('../../util/util.js');
+	import refresh from '../../components/refresh.vue';
+	import navTab from '../../components/navTab.vue';
+	import tabBar4 from '../../components/tabBar4.vue';
 	export default {
 		components: {
-			uniLoadMore,
-			empty
+			refresh,
+			navTab,
+			tabBar4
 		},
 		data() {
 			return {
-				tabCurrentIndex: 0,
-				navList: [{
-						state: 0,
-						text: '全部',
-						loadingType: 'more',
-						orderList: []
-					},
-					{
-						state: 1,
-						text: '待付款',
-						loadingType: 'more',
-						orderList: []
-					},
-					{
-						state: 2,
-						text: '待收货',
-						loadingType: 'more',
-						orderList: []
-					},
-					{
-						state: 3,
-						text: '待评价',
-						loadingType: 'more',
-						orderList: []
-					},
-					{
-						state: 4,
-						text: '售后',
-						loadingType: 'more',
-						orderList: []
-					}
-				],
+				currentPage: 'index',
+				toView: '', //回到顶部id
+				tabTitle: ['全部', '已接单', '进行中', '未评价'], //导航栏格式 --导航栏组件
+				currentTab: 0, //sweiper所在页
+				pages: [1, 1, 1, 1], //第几个swiper的第几页
+				list: [
+					[1, 2, 3, 4, 5, 6],
+					['a', 'b', 'c', 'd', 'e', 'f'],
+					['2233', '4234', '13144', '324244'],
+					['2233', '4234', '13144', '324244']
+				] //数据格式
 			};
 		},
-		
-		onLoad(options){
-			/**
-			 * 修复app端点击除全部订单外的按钮进入时不加载数据的问题
-			 * 替换onLoad下代码即可
-			 */
-			this.tabCurrentIndex = +options.state;
-			// #ifndef MP
-			this.loadData()
-			// #endif
-			// #ifdef MP
-			if(options.state == 0){
-				this.loadData()
-			}
-			// #endif
-			
+		onLoad(e) {
+
 		},
-		 
+		onShow() {},
+		onHide() {},
 		methods: {
-			//获取订单列表
-			loadData(source){
-				//这里是将订单挂载到tab列表下
-				let index = this.tabCurrentIndex;
-				let navItem = this.navList[index];
-				let state = navItem.state;
-				
-				if(source === 'tabChange' && navItem.loaded === true){
-					//tab切换只有第一次需要加载数据
-					return;
-				}
-				if(navItem.loadingType === 'loading'){
-					//防止重复加载
-					return;
-				}
-				
-				navItem.loadingType = 'loading';
-				
-				setTimeout(()=>{
-					let orderList = Json.orderList.filter(item=>{
-						//添加不同状态下订单的表现形式
-						item = Object.assign(item, this.orderStateExp(item.state));
-						//演示数据所以自己进行状态筛选
-						if(state === 0){
-							//0为全部订单
-							return item;
-						}
-						return item.state === state
-					});
-					orderList.forEach(item=>{
-						navItem.orderList.push(item);
-					})
-					//loaded新字段用于表示数据加载完毕，如果为空可以显示空白页
-					this.$set(navItem, 'loaded', true);
-					
-					//判断是否还有数据， 有改为 more， 没有改为noMore 
-					navItem.loadingType = 'more';
-				}, 600);	
-			}, 
-
-			//swiper 切换
-			changeTab(e){
-				this.tabCurrentIndex = e.target.current;
-				this.loadData('tabChange');
+			toTop() {
+				this.toView = ''
+				setTimeout(() => {
+					this.toView = 'top' + this.currentTab
+				}, 10)
 			},
-			//顶部tab点击
-			tabClick(index){
-				this.tabCurrentIndex = index;
+			changeTab(index) {
+				this.currentTab = index;
 			},
-			//删除订单
-			deleteOrder(index){
-				uni.showLoading({
-					title: '请稍后'
+			naviagetorToPages(url) {
+				uni.navigateTo({
+					url: url
+				});
+			},
+			// 其他请求事件 当然刷新和其他请求可以写一起 多一层判断。
+			isRequest() {
+				return new Promise((resolve, reject) => {
+					this.pages[this.currentTab]++
+					var that = this
+					setTimeout(() => {
+						uni.hideLoading()
+						uni.showToast({
+							icon: 'none',
+							title: `请求第${that.currentTab + 1 }个导航栏的第${that.pages[that.currentTab]}页数据成功`
+						})
+						let newData = ['新数据1', '新数据2', '新数据3']
+						resolve(newData)
+					}, 1000)
 				})
-				setTimeout(()=>{
-					this.navList[this.tabCurrentIndex].orderList.splice(index, 1);
-					uni.hideLoading();
-				}, 600)
 			},
-			//取消订单
-			cancelOrder(item){
+			// swiper 滑动
+			swiperTab: function(e) {
+				var index = e.detail.current //获取索引
+				this.$refs.navTab.longClick(index);
+			},
+			// 加载更多 util.throttle为防抖函数
+			lower1: util.throttle(function(e) {
+				console.log(`加载${this.currentTab}`) //currentTab表示当前所在页数 根据当前所在页数发起请求并带上page页数
 				uni.showLoading({
-					title: '请稍后'
+					title: '加载中',
+					mask: true
 				})
-				setTimeout(()=>{
-					let {stateTip, stateTipColor} = this.orderStateExp(9);
-					item = Object.assign(item, {
-						state: 9,
-						stateTip, 
-						stateTipColor
-					})
-					
-					//取消订单后删除待付款中该项
-					let list = this.navList[1].orderList;
-					let index = list.findIndex(val=>val.id === item.id);
-					index !== -1 && list.splice(index, 1);
-					
-					uni.hideLoading();
-				}, 600)
+				this.isRequest().then((res) => {
+					let tempList = this.list
+					tempList[this.currentTab] = tempList[this.currentTab].concat(res)
+					console.log(tempList)
+					this.list = tempList
+					this.$forceUpdate() //二维数组，开启强制渲染
+				})
+			}, 300),
+			// 刷新touch监听
+			refreshStart(e) {
+				this.$refs.refresh.refreshStart(e);
 			},
-
-			//订单状态文字和颜色
-			orderStateExp(state){
-				let stateTip = '',
-					stateTipColor = '#fa436a';
-				switch(+state){
-					case 1:
-						stateTip = '待付款'; break;
-					case 2:
-						stateTip = '待发货'; break;
-					case 9:
-						stateTip = '订单已关闭'; 
-						stateTipColor = '#909399';
-						break;
-						
-					//更多自定义
-				}
-				return {stateTip, stateTipColor};
+			refreshMove(e) {
+				this.$refs.refresh.refreshMove(e);
+			},
+			refreshEnd(e) {
+				this.$refs.refresh.refreshEnd(e);
+			},
+			isRefresh() {
+				setTimeout(() => {
+					uni.showToast({
+						icon: 'success',
+						title: '刷新成功'
+					})
+					this.$refs.refresh.endAfter() //刷新结束调用
+				}, 1000)
 			}
-		},
-	}
+		}
+	};
 </script>
 
-<style lang="scss">
-	page, .content{
-		background: $page-color-base;
-		height: 100%;
+<style lang="scss" scoped>
+	
+	.order-font-color {
+		color: #75787d;
 	}
 	
-	.swiper-box{
-		height: calc(100% - 40px);
-	}
-	.list-scroll-content{
-		height: 100%;
+	.order-item {
+		padding: 8upx 20upx;
+		font-size: $font-lg;
+		color: $font-color-dark;
 	}
 	
-	.navbar{
+	.order-item-bottom{
 		display: flex;
-		height: 40px;
-		padding: 0 5px;
-		background: #fff;
-		box-shadow: 0 1px 5px rgba(0,0,0,.06);
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.container999 {
+		width: 100vw;
+		font-size: 28upx;
+		min-height: 100vh;
+		overflow: hidden;
+		color: #6B8082;
 		position: relative;
-		z-index: 10;
-		.nav-item{
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100%;
-			font-size: 15px;
-			color: $font-color-dark;
-			position: relative;
-			&.current{
-				color: $base-color;
-				&:after{
-					content: '';
-					position: absolute;
-					left: 50%;
-					bottom: 0;
-					transform: translateX(-50%);
-					width: 44px;
-					height: 0;
-					border-bottom: 2px solid $base-color;
-				}
-			}
-		}
+		background-color: #f6f6f6;
 	}
 
-	.uni-swiper-item{
-		height: auto;
+	.content {
+		width: 100%;
 	}
-	.order-item{
+
+	.card {
+		width: 90%;
+		height: 368upx;
+		background-color: white;
+		margin: 0 auto 42upx auto;
+		background: #FFFFFF;
+		box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.10);
+		border-radius: 5px;
+		position: relative;
+	}
+
+	.noCard {
+		width: 90%;
+		height: 200upx;
+		margin: auto;
+		background-color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #999999;
+		box-shadow: 0 0 10upx 0 rgba(0, 0, 0, 0.10);
+		border-radius: 10upx;
+	}
+
+
+	.nav1 {
+		position: fixed;
+		left: 0;
+		/* top: 64px; */
+		color: white;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
-		padding-left: 30upx;
-		background: #fff;
-		margin-top: 16upx;
-		.i-top{
-			display: flex;
-			align-items: center;
-			height: 80upx;
-			padding-right:30upx;
-			font-size: $font-base;
-			color: $font-color-dark;
-			position: relative;
-			.time{
-				flex: 1;
-			}
-			.state{
-				color: $base-color;
-			}
-			.del-btn{
-				padding: 10upx 0 10upx 36upx;
-				font-size: $font-lg;
-				color: $font-color-light;
-				position: relative;
-				&:after{
-					content: '';
-					width: 0;
-					height: 30upx;
-					border-left: 1px solid $border-color-dark;
-					position: absolute;
-					left: 20upx;
-					top: 50%;
-					transform: translateY(-50%);
-				}
-			}
-		}
-		/* 多条商品 */
-		.goods-box{
-			height: 160upx;
-			padding: 20upx 0;
-			white-space: nowrap;
-			.goods-item{
-				width: 120upx;
-				height: 120upx;
-				display: inline-block;
-				margin-right: 24upx;
-			}
-			.goods-img{
-				display: block;
-				width: 100%;
-				height: 100%;
-			}
-		}
-		/* 单条商品 */
-		.goods-box-single{
-			display: flex;
-			padding: 20upx 0;
-			.goods-img{
-				display: block;
-				width: 120upx;
-				height: 120upx;
-			}
-			.right{
-				flex: 1;
-				display: flex;
-				flex-direction: column;
-				padding: 0 30upx 0 24upx;
-				overflow: hidden;
-				.title{
-					font-size: $font-base + 2upx;
-					color: $font-color-dark;
-					line-height: 1;
-				}
-				.attr-box{
-					font-size: $font-sm + 2upx;
-					color: $font-color-light;
-					padding: 10upx 12upx;
-				}
-				.price{
-					font-size: $font-base + 2upx;
-					color: $font-color-dark;
-					&:before{
-						content: '￥';
-						font-size: $font-sm;
-						margin: 0 2upx 0 8upx;
-					}
-				}
-			}
-		}
-		
-		.price-box{
-			display: flex;
-			justify-content: flex-end;
-			align-items: baseline;
-			padding: 20upx 30upx;
-			font-size: $font-sm + 2upx;
-			color: $font-color-light;
-			.num{
-				margin: 0 8upx;
-				color: $font-color-dark;
-			}
-			.price{
-				font-size: $font-lg;
-				color: $font-color-dark;
-				&:before{
-					content: '￥';
-					font-size: $font-sm;
-					margin: 0 2upx 0 8upx;
-				}
-			}
-		}
-		.action-box{
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-			height: 100upx;
-			position: relative;
-			padding-right: 30upx;
-		}
-		.action-btn{
-			width: 160upx;
-			height: 60upx;
-			margin: 0;
-			margin-left: 24upx;
-			padding: 0;
-			text-align: center;
-			line-height: 60upx;
-			font-size: $font-sm + 2upx;
-			color: $font-color-dark;
-			background: #fff;
-			border-radius: 100px;
-			&:after{
-				border-radius: 100px;
-			}
-			&.recom{
-				background: #fff9f9;
-				color: $base-color;
-				&:after{
-					border-color: #f7bcc8;
-				}
-			}
-		}
+		align-items: flex-start;
+		justify-content: flex-start;
+		font-size: 24upx;
+		background-color: #50B7EA;
+		z-index: 1996;
 	}
-	
-	
-	/* load-more */
-	.uni-load-more {
+
+	.searchInput999 {
+		width: 90%;
+		margin: 0 auto;
+		background: white;
+		border-radius: 30upx;
 		display: flex;
-		flex-direction: row;
-		height: 80upx;
 		align-items: center;
-		justify-content: center
+		justify-content: center;
+		height: 56upx;
 	}
-	
-	.uni-load-more__text {
-		font-size: 28upx;
-		color: #999
+
+	.search999 {
+		width: 32upx;
+		height: 32upx;
 	}
-	
-	.uni-load-more__img {
-		height: 24px;
-		width: 24px;
-		margin-right: 10px
+
+	.searchBox999 {
+		width: 56upx;
+		height: 56upx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
-	
-	.uni-load-more__img>view {
-		position: absolute
-	}
-	
-	.uni-load-more__img>view view {
-		width: 6px;
-		height: 2px;
-		border-top-left-radius: 1px;
-		border-bottom-left-radius: 1px;
-		background: #999;
-		position: absolute;
-		opacity: .2;
-		transform-origin: 50%;
-		animation: load 1.56s ease infinite
-	}
-	
-	.uni-load-more__img>view view:nth-child(1) {
-		transform: rotate(90deg);
-		top: 2px;
-		left: 9px
-	}
-	
-	.uni-load-more__img>view view:nth-child(2) {
-		transform: rotate(180deg);
-		top: 11px;
-		right: 0
-	}
-	
-	.uni-load-more__img>view view:nth-child(3) {
-		transform: rotate(270deg);
-		bottom: 2px;
-		left: 9px
-	}
-	
-	.uni-load-more__img>view view:nth-child(4) {
-		top: 11px;
-		left: 0
-	}
-	
-	.load1,
-	.load2,
-	.load3 {
-		height: 24px;
-		width: 24px
-	}
-	
-	.load2 {
-		transform: rotate(30deg)
-	}
-	
-	.load3 {
-		transform: rotate(60deg)
-	}
-	
-	.load1 view:nth-child(1) {
-		animation-delay: 0s
-	}
-	
-	.load2 view:nth-child(1) {
-		animation-delay: .13s
-	}
-	
-	.load3 view:nth-child(1) {
-		animation-delay: .26s
-	}
-	
-	.load1 view:nth-child(2) {
-		animation-delay: .39s
-	}
-	
-	.load2 view:nth-child(2) {
-		animation-delay: .52s
-	}
-	
-	.load3 view:nth-child(2) {
-		animation-delay: .65s
-	}
-	
-	.load1 view:nth-child(3) {
-		animation-delay: .78s
-	}
-	
-	.load2 view:nth-child(3) {
-		animation-delay: .91s
-	}
-	
-	.load3 view:nth-child(3) {
-		animation-delay: 1.04s
-	}
-	
-	.load1 view:nth-child(4) {
-		animation-delay: 1.17s
-	}
-	
-	.load2 view:nth-child(4) {
-		animation-delay: 1.3s
-	}
-	
-	.load3 view:nth-child(4) {
-		animation-delay: 1.43s
-	}
-	
-	@-webkit-keyframes load {
-		0% {
-			opacity: 1
-		}
-	
-		100% {
-			opacity: .2
-		}
+
+	.input999 {
+		color: #999;
+		width: 80%;
 	}
 </style>
