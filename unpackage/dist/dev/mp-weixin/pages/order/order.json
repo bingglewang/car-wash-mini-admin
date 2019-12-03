@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "uni-load-more": "/components/uni-load-more/uni-load-more",
-    "empty": "/components/empty"
+    "refresh": "/components/refresh",
+    "nav-tab": "/components/navTab",
+    "tab-bar4": "/components/tabBar4"
   }
 }

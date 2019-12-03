@@ -265,29 +265,36 @@ var _vuex = __webpack_require__(/*! vuex */ 10);function _interopRequireDefault(
         		title: '提交中...'
         	}) */
       var loginParam = {
-        username: this.phoneNumber,
-        password: this.passwd };
+        status: 1,
+        data: {
+          id: 1,
+          mobile: 18888888888,
+          nickname: 'Leo yo',
+          portrait: 'http://img.61ef.cn/news/201409/28/2014092805595807.jpg' },
+
+        msg: '提示' };
 
       _this.login(loginParam);
+      uni.navigateBack();
       /* 	login.login(loginParam, function(resp){
-                               		uni.hideLoading()
-                               		console.log(666,resp);
-                               		if(resp.data.code - 200 == 0){
-                               			uni.showToast({title: '登录成功',icon:"success"});
-                               			//将获取的token信息存储到缓存
-                               			uni.setStorage({
-                               			    key: 'token',  
-                               			    data: resp.data.data.tokenHead+ " "+resp.data.data.token
-                               			})
-                               			getCurrentUserInfo.getCurrentUserInfo(function(resp1){
-                               				let defaultUserInfo = resp1.data.data;
-                               				_this.login(defaultUserInfo)
-                               			})
-                                                    uni.navigateBack();  
-                               		}else{
-                               			uni.showToast({title: resp.data.message,icon:"none"});
-                               		}
-                               	}); */
+                          		uni.hideLoading()
+                          		console.log(666,resp);
+                          		if(resp.data.code - 200 == 0){
+                          			uni.showToast({title: '登录成功',icon:"success"});
+                          			//将获取的token信息存储到缓存
+                          			uni.setStorage({
+                          			    key: 'token',  
+                          			    data: resp.data.data.tokenHead+ " "+resp.data.data.token
+                          			})
+                          			getCurrentUserInfo.getCurrentUserInfo(function(resp1){
+                          				let defaultUserInfo = resp1.data.data;
+                          				_this.login(defaultUserInfo)
+                          			})
+                                               uni.navigateBack();  
+                          		}else{
+                          			uni.showToast({title: resp.data.message,icon:"none"});
+                          		}
+                          	}); */
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -48,7 +48,7 @@ var prePage = function prePage() {
 
 
   return prePage.$vm;
-};var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 156));};
+};var cuCustom = function cuCustom() {return __webpack_require__.e(/*! import() | colorui/components/cu-custom */ "colorui/components/cu-custom").then(__webpack_require__.bind(null, /*! ./colorui/components/cu-custom.vue */ 157));};
 
 
 _vue.default.component('cu-custom', cuCustom);
