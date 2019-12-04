@@ -29,7 +29,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.order-section .order-item {
+.order-section .order-item.data-v-245adeaf {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -48,7 +48,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.order-section {
+.order-section.data-v-245adeaf {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -62,13 +62,13 @@
   background: #fff;
   border-radius: 10rpx;
 }
-.user-section {
+.user-section.data-v-245adeaf {
   padding: 100rpx 30rpx 0;
   position: relative;
   background-image: -o-linear-gradient(45deg, #0081ff, #1cbbb4);
   background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
-.user-section .bg {
+.user-section .bg.data-v-245adeaf {
     position: absolute;
     left: 0;
     top: 0;
@@ -78,7 +78,7 @@
             filter: blur(1px);
     opacity: .7;
 }
-.user {
+.user.data-v-245adeaf {
   width: 92%;
   padding: 0 4%;
   display: -webkit-box;
@@ -90,7 +90,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.user .left {
+.user .left.data-v-245adeaf {
     width: 20vw;
     height: 20vw;
     -webkit-flex-shrink: 0;
@@ -100,23 +100,23 @@
     border: solid 1rpx #fff;
     border-radius: 100%;
 }
-.user .left image {
+.user .left image.data-v-245adeaf {
       width: 20vw;
       height: 20vw;
       border-radius: 100%;
 }
-.user .right {
+.user .right.data-v-245adeaf {
     width: 100%;
 }
-.user .right .username {
+.user .right .username.data-v-245adeaf {
       font-size: 36rpx;
       color: #303133;
 }
-.user .right .signature {
+.user .right .signature.data-v-245adeaf {
       color: #303133;
       font-size: 28rpx;
 }
-.user-info-box {
+.user-info-box.data-v-245adeaf {
   height: 180rpx;
   display: -webkit-box;
   display: -webkit-flex;
@@ -129,18 +129,18 @@
   position: relative;
   z-index: 1;
 }
-.user-info-box .portrait {
+.user-info-box .portrait.data-v-245adeaf {
     width: 130rpx;
     height: 130rpx;
     border: 5rpx solid #fff;
     border-radius: 50%;
 }
-.user-info-box .username {
+.user-info-box .username.data-v-245adeaf {
     font-size: 38rpx;
     color: #303133;
     margin-left: 20rpx;
 }
-.cover-container {
+.cover-container.data-v-245adeaf {
   background: #f8f8f8;
   margin-top: -150rpx;
   padding: 0 30rpx;
@@ -148,33 +148,33 @@
   background: #f5f5f5;
   padding-bottom: 20rpx;
 }
-.cover-container .arc {
+.cover-container .arc.data-v-245adeaf {
     position: absolute;
     left: 0;
     top: -34rpx;
     width: 100%;
     height: 36rpx;
 }
-.order-section {
+.order-section.data-v-245adeaf {
   padding: 28rpx 0;
   margin-top: 20rpx;
 }
-.order-section .order-item {
+.order-section .order-item.data-v-245adeaf {
     width: 120rpx;
     height: 120rpx;
     border-radius: 10rpx;
     font-size: 24rpx;
     color: #303133;
 }
-.order-section .yticon {
+.order-section .yticon.data-v-245adeaf {
     font-size: 48rpx;
     margin-bottom: 18rpx;
     color: #fa436a;
 }
-.order-section .icon-shouhoutuikuan {
+.order-section .icon-shouhoutuikuan.data-v-245adeaf {
     font-size: 44rpx;
 }
-.history-section {
+.history-section.data-v-245adeaf {
   margin-top: 20rpx;
   background: #fff;
   border-radius: 10rpx;

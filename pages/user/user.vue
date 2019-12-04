@@ -41,33 +41,37 @@
 			<image class="arc" src="/static/arc.png"></image>
 			<!-- 订单 -->
 			<view class="order-section">
-				<view class="order-item" @click="navTo('/pages/order/order?state=0')" hover-class="common-hover"  :hover-stay-time="50">
-					<text class="yticon icon-shouye"></text>
+				<view class="order-item cu-avatar bg-white" @click="navTo('/pages/order/order?state=0')" hover-class="common-hover"  :hover-stay-time="50">
+					<view class='cu-tag badge'>99</view>
+					<text class="yticon icon-shouye" style="color: #4CD964;"></text>
 					<text>全部</text>
 				</view>
-				<view class="order-item" @click="navTo('/pages/order/order?state=1')"  hover-class="common-hover" :hover-stay-time="50">
-					<text class="yticon icon-daifukuan"></text>
+				<view class="order-item cu-avatar bg-white" @click="navTo('/pages/order/order?state=1')"  hover-class="common-hover" :hover-stay-time="50">
+					<view class='cu-tag badge'>99</view>
+					<text class="yticon icon-daifukuan" style="color: #F43F3B;"></text>
 					<text>已接单</text>
 				</view>
-				<view class="order-item" @click="navTo('/pages/order/order?state=2')" hover-class="common-hover"  :hover-stay-time="50">
-					<text class="yticon icon-yishouhuo"></text>
+				<view class="order-item cu-avatar bg-white" @click="navTo('/pages/order/order?state=2')" hover-class="common-hover"  :hover-stay-time="50">
+					<view class='cu-tag badge'>99</view>
+					<text class="cuIcon-taxi" style="font-size: 48upx;margin-bottom: 18upx;color: #f4ea2a;"></text>
 					<text>进行中</text>
 				</view>
-				<view class="order-item" @click="navTo('/pages/order/order?state=4')" hover-class="common-hover"  :hover-stay-time="50">
-					<text class="yticon icon-shouhoutuikuan"></text>
+				<view class="order-item cu-avatar bg-white" @click="navTo('/pages/order/order?state=4')" hover-class="common-hover"  :hover-stay-time="50">
+					<view class='cu-tag badge'>99</view>
+					<text class="yticon icon-pingjia" style="color: #0081FF;"></text>
 					<text>未评价</text>
 				</view>
 			</view>
 			<!-- 底部菜单 -->
-			<view class="history-section icon">
-				<list-cell icon="icon-iconfontweixin" iconColor="#e07472" title="我的信息" @eventClick="navTo('/pages/userinfo/userinfo')"></list-cell>
-				<list-cell icon="icon-dizhi" iconColor="#5fcda2" title="我的二维码" @eventClick="navTo('/pages/user/myQR')"></list-cell>
-				<list-cell icon="icon-share" iconColor="#9789f7" title="我推荐的人"  @eventClick="navTo('/pages/user/myFriend')"></list-cell>
-				<list-cell icon="icon-pinglun-copy" iconColor="#ee883b" title="我的钱包" ></list-cell>
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="我的消息"></list-cell>
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="安全中心"></list-cell>
-				<list-cell icon="icon-shoucang_xuanzhongzhuangtai" iconColor="#54b4ef" title="新闻"></list-cell>
-				<list-cell icon="icon-shezhi1" iconColor="#e07472" title="设置" border="" @eventClick="navTo('/pages/set/set')"></list-cell>
+			<view class="history-section icon">  
+				<list-cell icon="cuIcon-people" :iconTpe="1" iconColor="#e07472" title="我的信息" @eventClick="navTo('/pages/userinfo/userinfo')"></list-cell>
+				<list-cell icon="cuIcon-qrcode" :iconTpe="1" iconColor="#5fcda2" title="我的二维码" @eventClick="navTo('/pages/user/myQR')"></list-cell>
+				<list-cell icon="cuIcon-friend" :iconTpe="1" iconColor="#9789f7" title="我推荐的人"  @eventClick="navTo('/pages/user/myFriend')"></list-cell>
+				<list-cell icon="cuIcon-redpacket" :iconTpe="1" iconColor="#ee883b" title="我的钱包" @eventClick="navTo('/pages/user/myWallet')"></list-cell>
+				<list-cell icon="cuIcon-message" :iconTpe="1" iconColor="#0088ff" title="我的消息" @eventClick="navTo('/pages/notice/notice')"></list-cell>
+				<list-cell icon="cuIcon-safe" :iconTpe="1" iconColor="#f4ea2a" title="安全中心" @eventClick="navTo('/pages/user/mySafe')"></list-cell>
+				<!-- <list-cell icon="cuIcon-news" :iconTpe="1" iconColor="#54b4ef" title="新闻"></list-cell> -->
+				<list-cell icon="cuIcon-settingsfill" :iconTpe="1" iconColor="#e07472" title="设置" border="" @eventClick="navTo('/pages/set/set')"></list-cell>
 			</view>
 		</view>
 			
@@ -210,7 +214,7 @@
         }  
     }  
 </script>  
-<style lang='scss'>
+<style lang='scss' scoped>
 	%flex-center {
 	 display:flex;
 	 flex-direction: column;

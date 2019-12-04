@@ -64,6 +64,18 @@
 		{
 			"path": "pages/user/myFriend",
 			"style": {}
+		},
+		{
+			"path": "pages/user/myWallet",
+			"style": {}
+		},
+		{
+			"path": "pages/user/mySafe",
+			"style": {}
+		},
+		{
+			"path": "pages/tixian/tixianfangshi",
+			"style": {}
 		}
 	],
 	"globalStyle": {

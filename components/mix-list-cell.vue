@@ -3,8 +3,16 @@
 		
 		<view class="mix-list-cell" :class="border" @click="eventClick" hover-class="cell-hover"  :hover-stay-time="50">
 			<text
-				v-if="icon"
+				v-if="icon && iconTpe == 0"
 				class="cell-icon yticon"
+				:style="[{
+					color: iconColor,
+				}]"
+				:class="icon"
+			></text>
+			<text
+				v-if="icon && iconTpe == 1"
+				class="cell-icon"
 				:style="[{
 					color: iconColor,
 				}]"
@@ -37,6 +45,10 @@
 			}
 		},
 		props: {
+			iconTpe:{
+				type:Number,
+				default: 0
+			},
 			icon: {
 				type: String,
 				default: ''

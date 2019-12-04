@@ -17,7 +17,10 @@
     "pages/money/paySuccess",
     "pages/notice/notice",
     "pages/user/myQR",
-    "pages/user/myFriend"
+    "pages/user/myFriend",
+    "pages/user/myWallet",
+    "pages/user/mySafe",
+    "pages/tixian/tixianfangshi"
   ],
   "subPackages": [],
   "window": {

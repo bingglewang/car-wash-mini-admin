@@ -127,7 +127,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 page {
 	background-color: #f3f3f3;
 }
