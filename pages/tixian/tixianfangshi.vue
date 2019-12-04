@@ -3,13 +3,13 @@
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText"></block>
 			<block slot="content">提现方式</block>
-			<view slot="right" style="padding-right: 30upx;font-size: 14px;">提现记录</view>
 		</cu-custom>
 		
 		<view class="cu-bar bg-white solid-bottom">
 			<view class="action">
 				选择提现方式
 			</view>
+			<view class="cu-tag radius light bg-gradual-blue" style="font-size: 14px;margin-right: 30upx;" @click="toPages('/pages/tixian/tixianjilu')">提现记录</view>
 		</view>
 		<view class="cu-list menu">
 			<view class="cu-item" v-for="(item,index) in tixianTypeList" :key="index">
@@ -75,7 +75,14 @@
 			}
 		},
 		methods:{
-			
+			toPages(url){
+				/* if(!this.hasLogin){
+					url = '/pages/login/login';
+				} */
+				uni.navigateTo({  
+					url
+				})  
+			}
 		}
 	}
 </script>

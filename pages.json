@@ -76,6 +76,10 @@
 		{
 			"path": "pages/tixian/tixianfangshi",
 			"style": {}
+		},
+		{
+			"path": "pages/tixian/tixianjilu",
+			"style": {}
 		}
 	],
 	"globalStyle": {
