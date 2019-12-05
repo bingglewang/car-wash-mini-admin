@@ -35,26 +35,7 @@
 			"path": "pages/order/orderDetail",
 			"style": {}
 		}, 
-		{
-			"path": "pages/money/money",
-			"style": {}
-		}, {
-			"path": "pages/order/createOrder",
-			"style": {}
-		}, {
-			"path": "pages/address/address",
-			"style": {}
-		}, {
-			"path": "pages/address/addressManage",
-			"style": {}
-		}, {
-			"path": "pages/money/pay",
-			"style": {}
-		},
-		{
-			"path": "pages/money/paySuccess",
-			"style": {}
-		}, {
+		 {
 			"path": "pages/notice/notice",
 			"style": {}
 		}, {
@@ -80,6 +61,22 @@
 		{
 			"path": "pages/tixian/tixianjilu",
 			"style": {}
+		},
+		{
+			"path": "pages/about/about",
+			"style": {}
+		},
+		{
+			"path":"pages/security/zhifumima",
+			"style":{}
+		},
+		{
+			"path":"pages/bankcard/addBankCard",
+			"style":{}
+		},
+		{
+			"path":"pages/bankcard/myBankCard",
+			"style":{}
 		}
 	],
 	"globalStyle": {

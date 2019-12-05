@@ -14,7 +14,7 @@
 		<swiper style="min-height: 100vh;" :current="currentTab" @change="swiperTab">
 			<swiper-item v-for="(listItem,listIndex) in list" :key="listIndex">
 				<scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation :scroll-into-view="toView">
-					<view :id="'top'+listIndex" style="width: 100%;height: 110upx;">边距盒子</view>
+					<view :id="'top'+listIndex" style="width: 100%;height: 110upx;"></view>
 					<view class='cu-card'>
 						<view class="cu-item bg-white shadow padding" v-for="(item, index) in listItem" v-if="listItem.length > 0" :key="index" style="padding-bottom: 16upx;" @click="naviagetorToPages('/pages/order/orderDetail')">
 							<view class="order-item" style="display: flex;align-items: center;">
@@ -39,7 +39,7 @@
 							</view>
 							<view class="order-item">
 								<view class="order-item-bottom">
-									<view class="cu-tag radius light bg-gradual-blue" @click="naviagetorToPages('/pages/order/orderDetail')">去洗车</view>
+									<view class="cu-tag radius light bg-gradual-blue">去洗车</view>
 								</view>
 							</view>
 						</view>

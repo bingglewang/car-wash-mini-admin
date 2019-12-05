@@ -6,20 +6,20 @@
 		</cu-custom>
 		<view class="content">
 			<view class="list">
-				<view class="row">
+				<view class="row" @click="toPages('/pages/security/zhifumima?type=1')">
 					<view class="title">换绑手机</view>
 					<view class="right">
 						<view class="tis">132222222</view>
 						<view class="icon jiantou"></view>
 					</view>
 				</view>
-				<view class="row">
+				<view class="row" @click="toPages('/pages/security/zhifumima?type=2')">
 					<view class="title">支付密码</view>
 					<view class="right">
 						<view class="icon jiantou"></view>
 					</view>
 				</view>
-				<view class="row">
+				<view class="row" @click="toPages('/pages/security/zhifumima?type=3')">
 					<view class="title">登录密码</view>
 					<view class="right">
 						<view class="icon jiantou"></view>
@@ -38,7 +38,14 @@
 			}
 		},
 		methods:{
-			
+			toPages(url){
+				/* if(!this.hasLogin){
+					url = '/pages/login/login';
+				} */
+				uni.navigateTo({  
+					url
+				})  
+			}
 		}
 	}
 </script>

@@ -43,7 +43,7 @@
 				</view>
 			</view>
 			<view class="list">
-				<view class="row">
+				<view class="row" @click="toPages('/pages/bankcard/myBankCard')">
 					<view class="title">提现方式</view>
 					<view class="right">
 						<view class="tis"></view>
@@ -89,6 +89,14 @@ export default {
 		},
 		DateChange(e) {
 			this.date = e.detail.value
+		},
+		toPages(url){
+			/* if(!this.hasLogin){
+				url = '/pages/login/login';
+			} */
+			uni.navigateTo({  
+				url
+			})  
 		},
 		myUpload(path) {
 			let _this = this;

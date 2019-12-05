@@ -12,7 +12,7 @@
 			<text class="cell-tit">清除缓存</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
-		<view class="list-cell b-b" @click="navTo('关于Dcloud')" hover-class="cell-hover" :hover-stay-time="50">
+		<view class="list-cell b-b" @click="navTo('/pages/about/about')" hover-class="cell-hover" :hover-stay-time="50">
 			<text class="cell-tit">关于我们</text>
 			<text class="cell-more yticon icon-you"></text>
 		</view>
@@ -46,9 +46,9 @@
 
 			navTo(url){
 				/* this.$api.msg(`跳转到${url}`); */
-				if(!this.hasLogin){
+				/* if(!this.hasLogin){
 					url = '/pages/login/login';
-				}
+				} */
 				uni.navigateTo({  
 					url
 				})  
