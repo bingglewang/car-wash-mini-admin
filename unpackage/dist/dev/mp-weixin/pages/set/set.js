@@ -170,9 +170,9 @@ var _vuex = __webpack_require__(/*! vuex */ 10);function _objectSpread(target) {
 
     navTo: function navTo(url) {
       /* this.$api.msg(`跳转到${url}`); */
-      if (!this.hasLogin) {
-        url = '/pages/login/login';
-      }
+      /* if(!this.hasLogin){
+                                        	url = '/pages/login/login';
+                                        } */
       uni.navigateTo({
         url: url });
 

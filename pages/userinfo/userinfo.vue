@@ -44,7 +44,7 @@
 			</view>
 			<view class="list">
 				<view class="row" @click="toPages('/pages/bankcard/myBankCard')">
-					<view class="title">提现方式</view>
+					<view class="title">我的银行卡</view>
 					<view class="right">
 						<view class="tis"></view>
 						<view class="icon jiantou"></view>

@@ -29,39 +29,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.success-icon {
-  font-size: 160rpx;
-  color: #fa436a;
-  margin-top: 100rpx;
-}
-.tit {
-  font-size: 38rpx;
-  color: #303133;
-}
-.btn-group {
-  padding-top: 100rpx;
-}
-.mix-btn {
-  margin-top: 30rpx;
+.zhifu-button.data-v-bae5950c {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,20 +38,15 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 600rpx;
-  height: 80rpx;
-  font-size: 32rpx;
-  color: #fff;
-  background-color: #fa436a;
-  border-radius: 10rpx;
+  position: relative;
+  padding-top: 50rpx;
+  padding-bottom: 50rpx;
+  border-top: 1rpx solid #eee;
 }
-.mix-btn.hollow {
-    background: #fff;
-    color: #303133;
-    border: 1px solid #ccc;
+.zhifu-button .save-button-addCar.data-v-bae5950c {
+    border-radius: 100px;
+    width: 80%;
+    background-image: -o-linear-gradient(45deg, #0081ff, #1cbbb4);
+    background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
 

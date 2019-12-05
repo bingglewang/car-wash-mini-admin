@@ -9,18 +9,17 @@
     "pages/user/user",
     "pages/order/order",
     "pages/order/orderDetail",
-    "pages/money/money",
-    "pages/order/createOrder",
-    "pages/address/address",
-    "pages/address/addressManage",
-    "pages/money/pay",
-    "pages/money/paySuccess",
     "pages/notice/notice",
     "pages/user/myQR",
     "pages/user/myFriend",
     "pages/user/myWallet",
     "pages/user/mySafe",
-    "pages/tixian/tixianfangshi"
+    "pages/tixian/tixianfangshi",
+    "pages/tixian/tixianjilu",
+    "pages/about/about",
+    "pages/security/zhifumima",
+    "pages/bankcard/addBankCard",
+    "pages/bankcard/myBankCard"
   ],
   "subPackages": [],
   "window": {
@@ -36,5 +35,6 @@
   },
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
-  }
+  },
+  "sitemapLocation": "sitemap53.json"
 }
