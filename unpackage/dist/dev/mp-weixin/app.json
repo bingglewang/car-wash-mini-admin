@@ -19,7 +19,8 @@
     "pages/about/about",
     "pages/security/zhifumima",
     "pages/bankcard/addBankCard",
-    "pages/bankcard/myBankCard"
+    "pages/bankcard/myBankCard",
+    "pages/notice/noticeDetail"
   ],
   "subPackages": [],
   "window": {
@@ -36,5 +37,5 @@
   "usingComponents": {
     "cu-custom": "/colorui/components/cu-custom"
   },
-  "sitemapLocation": "sitemap53.json"
+  "sitemapLocation": "sitemap95.json"
 }
