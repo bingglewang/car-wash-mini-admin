@@ -7,7 +7,7 @@
 		
 		<view class="cu-bar bg-white solid-bottom">
 			<view class="action">
-				选择银行卡
+				选择提现方式
 			</view>
 			<view class="cu-tag radius light bg-gradual-blue" style="font-size: 14px;margin-right: 30upx;" @click="toPages('/pages/tixian/tixianjilu')">提现记录</view>
 		</view>

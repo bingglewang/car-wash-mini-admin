@@ -77,6 +77,10 @@
 		{
 			"path":"pages/bankcard/myBankCard",
 			"style":{}
+		},
+		{
+			"path":"pages/notice/noticeDetail",
+			"style":{}
 		}
 	],
 	"globalStyle": {

@@ -2,13 +2,16 @@
 	<view>
 		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
 			<block slot="backText"></block>
-			<block slot="content">我的银行卡</block>
+			<block slot="content">提现方式</block>
 		</cu-custom>
 		<view class="aui-box-item">
 			<view class="aui-card-list" :class="item.isBlue?'aui-card-blue':''" v-for="(item,index) in cardList" :key="index">
 				<view class="aui-card-list-bg" :class="item.isBlue?'aui-card-list-loan':''">
 					<text style="font-weight: bold;font-size: 20px;">{{item.cardName}}</text>
-					<view class="aui-card-list-link">
+					<view v-for="(item1,index1) in item.fieldList" :key="index1">
+						{{item1.fieldKey}}：{{item1.fieldValue}}
+					</view>
+					<view class="aui-card-list-link" @click="toPages('/pages/bankcard/addBankCard')">
 						查看全部
 						<text class="cuIcon-right"></text>
 					</view>
@@ -17,7 +20,7 @@
 		</view>
 		
 		<view style="display: flex;justify-content: center;">
-			<view class="cu-btn line-blue round lg shadow" @click="toPages('/pages/bankcard/addBankCard')">添加银行卡</view>
+			<view class="cu-btn line-blue round lg shadow" @click="toPages('/pages/bankcard/addBankCard')">添加</view>
 		</view>
 	</view>
 </template>
@@ -27,12 +30,46 @@
 		data() {
 			return {
 				cardList: [{
+					    type:1,
 						cardName: '中国银行卡',
-						isBlue: false
+						isBlue: false,
+						fieldList:[
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							},
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							},
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							},
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							}
+						]
 					},
 					{
+						type:2,
 						cardName: '工商银行卡',
-						isBlue: true
+						isBlue: true,
+						fieldList:[
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							},
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							},
+							{
+								fieldKey:'基督教',
+								fieldValue:'fjfjfj'
+							}
+						]
 					}
 				]
 			}
