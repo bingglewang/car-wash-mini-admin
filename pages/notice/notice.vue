@@ -5,7 +5,7 @@
 			<block slot="content">我的消息</block>
 		</cu-custom>
 		<view class="cu-list menu">
-			<view class="cu-item" v-for="(item,index) in noticeList" :key="index" @click="toPages('/pages/notice/noticeDetail?noticeDetail='+JSON.stringify(noticeList[index]))">
+			<view class="cu-item" v-for="(item,index) in noticeList" :key="index" @click="toPages(index)">
 				<view class="cu-avatar radius lg" :style="{'background-image':'url('+item.img+')'}">
 				</view>
 				<view class="content padding-tb-sm">
@@ -78,10 +78,12 @@
 			}
 		},
 		methods: {
-			toPages(url) {
+			toPages(index) {
 				/* if(!this.hasLogin){
 					url = '/pages/login/login';
 				} */
+				let url = '/pages/notice/noticeDetail?noticeDetail='+JSON.stringify(this.noticeList[index]);
+				
 				uni.navigateTo({
 					url
 				})

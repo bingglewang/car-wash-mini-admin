@@ -27,9 +27,6 @@
 
 <script>
 	import md5 from "@/common/SDK/md5.min.js";
-	import register from "@/api/login/index.js";
-	import registerUser from "@/api/login/index.js";
-	
 	
 	export default {
 		data() {

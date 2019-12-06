@@ -57,9 +57,6 @@
 
 <script>
 import avatar from '../../components/yq-avatar/yq-avatar.vue';
-import uploadFile from '@/api/fileupload/index.js';
-import updateUserIcon from "@/api/userinfo/index.js";
-import getCurrentUserInfo from "@/api/userinfo/index.js";
  import {  
         mapState,
 		mapMutations 

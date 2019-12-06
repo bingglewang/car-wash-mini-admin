@@ -19,23 +19,10 @@
 				<view @tap="toPage('resetpasswd')">忘记密码</view>
 			</view>
 		</view>
-		<!-- 第三方登录 -->
-		<view class="oauth" v-if="isShowOauth">
-			<view class="text">— 快速登录 —</view>
-			<view class="list">
-				<view @tap="oauthLogin('weixin')" v-if="showProvider.weixin" class="icon weixin"></view>
-				<view @tap="oauthLogin('qq')" v-if="showProvider.qq" class="icon qq"></view>
-				<view @tap="oauthLogin('sinaweibo')" v-if="showProvider.sinaweibo" class="icon sinaweibo"></view>
-				<!-- <view @tap="oauthLogin('xiaomi')" v-if="showProvider.xiaomi" class="icon xiaomi"></view> -->
-			</view>
-		</view>
 	</view>
 </template>
 
 <script>
-	import md5 from "@/common/SDK/md5.min.js";
-	import login from "@/api/login/index.js";
-	import getCurrentUserInfo from "@/api/userinfo/index.js";
 	import {  
         mapMutations  
     } from 'vuex';
@@ -46,83 +33,15 @@
 				CustomBar: this.CustomBar,
 				phoneNumber: '',
 				passwd:'',
-				isShowOauth:false,
-				showProvider:{
-					weixin:false,
-					qq:false,
-					sinaweibo:false,
-					xiaomi:false
-				}
 			}
 		},
 		onShow() {
 			
 		},
 		onLoad() {
-			
-			//APP显示第三方登录
-			// #ifdef APP-PLUS
-				this.isShowOauth=true;
-			// #endif
-			this.getProvider();
-			
 		}, 
 		methods: {
 			...mapMutations(['login']),
-			oauthLogin(provider){
-				uni.showLoading();
-				//第三方登录
-				uni.login({
-					provider: provider,
-					success: (loginRes)=>{
-						console.log("success: "+JSON.stringify(loginRes));
-						//案例直接获取用户信息，一般不是在APP端直接获取用户信息，比如微信，获取一个code，传递给后端，后端再去请求微信服务器获取用户信息
-						uni.getUserInfo({
-							provider: provider,
-							success: (infoRes)=>{
-								console.log('用户信息：' + JSON.stringify(infoRes.userInfo));
-								uni.setStorage({
-									key: 'UserInfo',
-									data: {
-										username:infoRes.userInfo.nickName,
-										face:infoRes.userInfo.avatarUrl,
-										signature:'个性签名',
-										integral:0,
-										balance:0,
-										envelope:0
-									},
-									success: function () {
-										uni.hideLoading()
-										uni.showToast({title: '登录成功',icon:"success"});
-										setTimeout(function(){
-											uni.navigateBack();
-										},300)
-									}
-								});
-							}
-						});
-					},
-					fail:(e)=>{
-						console.log("fail: "+JSON.stringify(e));
-					}
-				});
-			},
-			getProvider(){
-				//获取第三方登录服务
-				uni.getProvider({
-					service: 'oauth',
-					success: (res)=>{
-						let len = res.provider.length;
-						for(let i=0;i<len;i++){
-							//有服务才显示按钮图标
-							this.showProvider[res.provider[i]] = true;
-						}
-						if(res.provider.length==0){
-							this.isShowOauth=false;
-						}
-					}
-				});
-			},
 			toPage(page){
 				uni.hideKeyboard()
 				uni.navigateTo({
@@ -137,22 +56,15 @@
 					uni.showToast({title: '请填写正确手机号码',icon:"none"});
 					return false; 
 				}
-			/* 	uni.showLoading({
-					title: '提交中...'
-				}) */
+				uni.showLoading({
+					title: '登录中...'
+				})
+				
 				let loginParam = {
-					status: 1,
-					data: {
-						id: 1,
-						mobile: 18888888888,
-						nickname: 'Leo yo',
-						portrait: 'http://img.61ef.cn/news/201409/28/2014092805595807.jpg'
-					},
-					msg: '提示'
+					
 				}
-				_this.login(loginParam);
-				 uni.navigateBack(); 
-			/* 	login.login(loginParam, function(resp){
+				
+				this.$api.request(loginParam, 'api/user/login','POST').then((resp) => {
 					uni.hideLoading()
 					console.log(666,resp);
 					if(resp.data.code - 200 == 0){
@@ -162,15 +74,15 @@
 						    key: 'token',  
 						    data: resp.data.data.tokenHead+ " "+resp.data.data.token
 						})
-						getCurrentUserInfo.getCurrentUserInfo(function(resp1){
-							let defaultUserInfo = resp1.data.data;
-							_this.login(defaultUserInfo)
-						})
-                        uni.navigateBack();  
+						_this.login(defaultUserInfo)
+					    uni.navigateBack();  
 					}else{
 						uni.showToast({title: resp.data.message,icon:"none"});
 					}
-				}); */
+				}).catch((err) => {
+					uni.hideLoading()
+					console.log('request fail', err);
+				}) 
 			}
 		}
 	}

@@ -88,6 +88,9 @@
 
 <script>
 import uniFab from '@/components/uni-fab/uni-fab.vue';
+  import {  
+        mapState 
+    } from 'vuex'; 
 export default {
 	components: {
 		uniFab
@@ -132,7 +135,14 @@ export default {
 		};
 	},
 
-	onLoad() {},
+	onLoad() {
+		console.log("是否登录:"+this.hasLogin)
+		if(!this.hasLogin){
+			uni.navigateTo({
+				url: '/pages/login/login'
+			}) 
+		}
+	},
 	//右上角分享功能
 	onShareAppMessage: function(res) {
 		return {
@@ -140,6 +150,9 @@ export default {
 			desc: '上门洗车',
 			path: '/pages/index/index',
 		};
+	},
+	computed: {
+		...mapState(['hasLogin','userInfo'])
 	},
 	methods: {
 		doXuanzhuan(){
