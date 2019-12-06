@@ -184,8 +184,11 @@ var _vuex = __webpack_require__(/*! vuex */ 10);function _objectSpread(target) {
         title: '登录中...' });
 
 
-      var loginParam = {};
-
+      var loginParam = {
+        mobile: this.phoneNumber,
+        loginType: 2,
+        deviceType: 1,
+        password: this.passwd };
 
 
       this.$api.request(loginParam, 'api/user/login', 'POST').then(function (resp) {

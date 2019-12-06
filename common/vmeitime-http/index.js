@@ -26,6 +26,7 @@ export const request = (data,url,method) => {
 	//设置请求前拦截器
 	http.interceptor.request = (config) => {
 		config.header = {
+			'Content-Type':'application/x-www-form-urlencoded',
 			"token": token,
 			"time": timestamp,
 			"nonceStr": randomStr

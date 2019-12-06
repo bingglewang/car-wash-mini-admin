@@ -2603,6 +2603,7 @@ var request = function request(data, url, method) {
   //设置请求前拦截器
   _interface.default.interceptor.request = function (config) {
     config.header = {
+      'Content-Type': 'application/x-www-form-urlencoded',
       "token": token,
       "time": timestamp,
       "nonceStr": randomStr };
@@ -11023,7 +11024,7 @@ module.exports = __webpack_amd_options__;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/set/set": {}, "pages/userinfo/userinfo": {}, "pages/login/login": {}, "pages/login/register": {}, "pages/login/resetpasswd": {}, "pages/user/user": {}, "pages/order/order": {}, "pages/order/orderDetail": {}, "pages/notice/notice": {}, "pages/user/myQR": {}, "pages/user/myFriend": {}, "pages/user/myWallet": {}, "pages/user/mySafe": {}, "pages/tixian/tixianfangshi": {}, "pages/tixian/tixianjilu": {}, "pages/about/about": {}, "pages/security/zhifumima": {}, "pages/bankcard/addBankCard": {}, "pages/bankcard/myBankCard": {}, "pages/notice/noticeDetail": {} }, "globalStyle": { "navigationBarBackgroundColor": "#0081ff", "navigationBarTitleText": "Car wash mini admin", "navigationStyle": "custom", "navigationBarTextStyle": "white" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": { "uni-fab": "/components/uni-fab/uni-fab" } }, "pages/set/set": { "usingComponents": {} }, "pages/userinfo/userinfo": { "usingComponents": { "avatar": "/components/yq-avatar/yq-avatar" } }, "pages/login/login": { "usingComponents": {} }, "pages/login/register": { "usingComponents": {} }, "pages/login/resetpasswd": { "usingComponents": {} }, "pages/user/user": { "usingComponents": { "list-cell": "/components/mix-list-cell" } }, "pages/order/order": { "usingComponents": { "refresh": "/components/refresh", "nav-tab": "/components/navTab", "tab-bar4": "/components/tabBar4" } }, "pages/order/orderDetail": { "usingComponents": { "my-issue": "/components/myIssue" } }, "pages/notice/notice": { "usingComponents": {} }, "pages/user/myQR": { "usingComponents": {} }, "pages/user/myFriend": { "usingComponents": {} }, "pages/user/myWallet": { "usingComponents": {} }, "pages/user/mySafe": { "usingComponents": {} }, "pages/tixian/tixianfangshi": { "usingComponents": {} }, "pages/tixian/tixianjilu": { "usingComponents": {} }, "pages/about/about": { "usingComponents": {} }, "pages/security/zhifumima": { "usingComponents": {} }, "pages/bankcard/addBankCard": { "usingComponents": {} }, "pages/bankcard/myBankCard": { "usingComponents": {} }, "pages/notice/noticeDetail": { "usingComponents": {} } }, "globalStyle": { "navigationBarBackgroundColor": "#0081ff", "navigationBarTitleText": "Car wash mini admin", "navigationStyle": "custom", "navigationBarTextStyle": "white" } };exports.default = _default;
 
 /***/ }),
 
