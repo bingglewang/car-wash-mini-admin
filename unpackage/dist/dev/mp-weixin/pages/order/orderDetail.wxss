@@ -32,8 +32,7 @@
 }
 .pingjia-area.data-v-854970c4 {
   border: #f37b1d solid 1rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding-right: 30rpx;
   width: 100%;
   padding: 10rpx 10rpx;
@@ -41,11 +40,9 @@
 .order-button-box.data-v-854970c4 {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -54,7 +51,7 @@
 .order-button-box .save-button-addCar.data-v-854970c4 {
     border-radius: 100px;
     width: 80%;
-    background-image: -o-linear-gradient(45deg, #0081ff, #1cbbb4);
+    background-image: -webkit-linear-gradient(45deg, #0081ff, #1cbbb4);
     background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
 .my-step-title.data-v-854970c4 {

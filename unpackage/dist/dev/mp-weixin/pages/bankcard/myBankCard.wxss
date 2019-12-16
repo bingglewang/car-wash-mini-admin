@@ -23,15 +23,13 @@
 .aui-card-list.data-v-693afafb {
   height: 140px;
   border-radius: 8px;
-  background-image: -webkit-gradient(linear, left top, right top, from(#fe9b2c), to(#ff7b03));
-  background-image: -o-linear-gradient(left, #fe9b2c, #ff7b03);
+  background-image: -webkit-linear-gradient(left, #fe9b2c, #ff7b03);
   background-image: linear-gradient(to right, #fe9b2c, #ff7b03);
   background-color: #ff7b03;
   margin-bottom: 20px;
 }
 .aui-card-blue.data-v-693afafb {
-  background-image: -webkit-gradient(linear, left top, right top, from(#60a5f5), to(#006ae3));
-  background-image: -o-linear-gradient(left, #60a5f5, #006ae3);
+  background-image: -webkit-linear-gradient(left, #60a5f5, #006ae3);
   background-image: linear-gradient(to right, #60a5f5, #006ae3);
   background-color: #006ae3;
 }

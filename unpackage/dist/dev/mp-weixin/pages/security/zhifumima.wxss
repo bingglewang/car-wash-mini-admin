@@ -20,18 +20,16 @@
 .zhifu-button.data-v-27aa338a {
   display: -webkit-box;
   display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
           align-items: center;
   position: relative;
 }
 .zhifu-button .save-button-addCar.data-v-27aa338a {
     border-radius: 100px;
     width: 80%;
-    background-image: -o-linear-gradient(45deg, #0081ff, #1cbbb4);
+    background-image: -webkit-linear-gradient(45deg, #0081ff, #1cbbb4);
     background-image: linear-gradient(45deg, #0081ff, #1cbbb4);
 }
 

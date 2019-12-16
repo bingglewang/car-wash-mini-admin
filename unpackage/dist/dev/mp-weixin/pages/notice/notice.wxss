@@ -21,8 +21,7 @@
   width: 200px;
   padding-left: 40rpx;
   overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
